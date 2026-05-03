@@ -23,7 +23,6 @@ app = FastAPI(
 # Exercício 2.6 — Exception handlers globais
 # ─────────────────────────────────────────────
 
-@app.include_router(predict.router, prefix="/ml", tags=["ML"])
 
 
 @app.exception_handler(RequestValidationError)
@@ -68,6 +67,8 @@ app.include_router(pratos.router,   prefix="/pratos",   tags=["Pratos"])
 app.include_router(bebidas.router,  prefix="/bebidas",  tags=["Bebidas"])
 app.include_router(pedidos.router,  prefix="/pedidos",  tags=["Pedidos"])
 app.include_router(reservas.router, prefix="/reservas", tags=["Reservas"])
+app.include_router(predict.router, prefix="/ml", tags=["ML"])
+
 
 
 # ─────────────────────────────────────────────
