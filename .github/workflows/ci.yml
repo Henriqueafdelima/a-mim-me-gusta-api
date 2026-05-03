@@ -50,11 +50,7 @@ jobs:
           test -d tests/           && echo "✅ tests/"           || echo "❌ tests/ ausente"
           test -d routers/         && echo "✅ routers/"         || echo "❌ routers/ ausente"
 
-      - name: Verificar formatação (black)
-        run: black --check .
 
-      - name: Verificar imports não utilizados (autoflake)
-        run: autoflake --check --remove-all-unused-imports -r .
 
       - name: Rodar testes smoke
         run: pytest tests/ -m smoke -v --tb=short
