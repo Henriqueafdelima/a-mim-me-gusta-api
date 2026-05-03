@@ -8,7 +8,8 @@ from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 
 from config import settings
-from routers import pratos, bebidas, pedidos, reservas
+from routers import pratos, bebidas, pedidos, reservas, predict
+
 
 # Exercício 1.1 — instância do FastAPI com metadados
 app = FastAPI(
@@ -21,6 +22,9 @@ app = FastAPI(
 # ─────────────────────────────────────────────
 # Exercício 2.6 — Exception handlers globais
 # ─────────────────────────────────────────────
+
+@app.include_router(predict.router, prefix="/ml", tags=["ML"])
+
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):

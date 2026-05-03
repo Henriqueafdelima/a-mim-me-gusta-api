@@ -4,7 +4,7 @@ pydantic
 pydantic-settings
 httpx
 pytest
-scikit-learn
+scikit-learn==1.5.2
 joblib
 numpy
 pandas
