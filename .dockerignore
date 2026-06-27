@@ -1,0 +1,49 @@
+# ── Segurança ─────────────────────────────────────────────────────────────────
+# Secrets nunca devem entrar na imagem.
+# Se a imagem vazar, o HF_TOKEN não vaza junto.
+.env
+*.env
+
+# ── Controle de versão ────────────────────────────────────────────────────────
+# O histórico do Git pode ser gigante e não pertence à imagem de produção.
+.git
+.gitignore
+.gitattributes
+
+# ── Bytecode Python ───────────────────────────────────────────────────────────
+# Gerado automaticamente — desnecessário na imagem.
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# ── Ambientes virtuais ────────────────────────────────────────────────────────
+# Centenas de MB que não pertencem à imagem — ela tem os próprios pacotes.
+env_ci_test/
+venv/
+.venv/
+
+# ── Artefatos de ML ───────────────────────────────────────────────────────────
+# model.pkl é baixado do Hugging Face Hub em runtime.
+# Não faz sentido empacotar na imagem — ficaria desatualizado a cada retreinamento.
+*.pkl
+*.joblib
+
+# ── Testes ────────────────────────────────────────────────────────────────────
+# Testes não pertencem à imagem de produção.
+tests/
+pytest.ini
+.pytest_cache/
+
+# ── Cadernos e documentação ───────────────────────────────────────────────────
+*.ipynb
+.ipynb_checkpoints/
+*.md
+*.docx
+
+# ── Arquivos de build e cache ─────────────────────────────────────────────────
+.dockerignore
+Dockerfile
+Dockerfile.*
+docker-compose.yml
+nginx.conf
